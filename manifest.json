@@ -11,7 +11,7 @@
 	// 浏览器右上角图标设置，browser_action、page_action、app必须三选一
 	"browser_action": 
 	{
-		"default_icon": "image/spider.jpg",
+		"default_icon": "image/spider.png",
 		// 图标悬停时的标题，可选
 		"default_title": "蜘蛛转码",
 		"default_popup": "html/popup.html"
@@ -28,5 +28,14 @@
 			"run_at": "document_end"
 		}
 	],
+	"commands": {
+		"_execute_browser_action": {
+			"suggested_key": {
+			  "default": "Ctrl+Q",
+			  "mac": "MacCtrl+Q"
+			},
+			"description": "Opens hello.html"
+		}
+	},
 	"content_security_policy": "script-src 'self'; object-src 'self'"
 }
