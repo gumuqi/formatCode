@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8;" >
+        <style type="text/css">
+            body {
+                padding: 32px;
+            }
+            textarea {
+                width: 500px;
+                height: 260px;
+                line-height: 22px;
+                margin-bottom: 20px;
+                padding: 10px;
+                resize: none;
+            }
+            .btn-wrap::after {
+                content: '';
+                display: block;
+                visibility: hidden;
+                height: 0;
+                clear: both;
+            }
+            .btn {
+                float: left;
+                display: inline;
+                margin: 0 16px 10px 0px;
+                padding: 5px 26px;
+                border-radius: 4px;
+                background-color: #457AE6;
+                border-color: #457AE6;
+                color: #fff;
+                transition: all 0.2s ease-in-out;
+                cursor: pointer;
+            }
+            .btn:hover {
+                background-color: #204d74;
+                border-color: #122b40;
+                box-shadow: 0 2px 8px 0 rgba(69, 122, 230, 0.4);
+            }
+        </style>
+    </head>
+    <body>
+        <textarea id="textstr"></textarea>
+        <div class="btn-wrap">
+            <div id="json" class="btn">JSON</div>
+            <div id="encodeBase64" class="btn">base64编码</div>
+            <div id="decodeBase64" class="btn">base64解码</div>
+            <div id="encodeURIComponent" class="btn">encodeURIComponent</div>
+            <div id="decodeURIComponent" class="btn">decodeURIComponent</div>
+        </div>
+        <script src="../js//jquery-1.8.3.js"></script>
+        <script src="../js/popup.js"></script>
+    </body>
+</html>
