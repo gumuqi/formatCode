@@ -17,7 +17,9 @@ var formatJson = function (json) {
      *---> \r\n{\r\n'name':'ccy',\r\n'age':18,\r\n
      *'info':\r\n[\r\n'address':'wuhan',\r\n'interest':'playCards'\r\n]\r\n}\r\n
      */
-    json = json.replace(/([\{\}])/g, '\r\n$1\r\n')
+    json = json.replace(/\n/g, '')
+                .replace(/\s/g, '')
+                .replace(/([\{\}])/g, '\r\n$1\r\n')
                 .replace(/([\[\]])/g, '\r\n$1\r\n')
                 .replace(/(\,)/g, '$1\r\n')
                 .replace(/(\r\n\r\n)/g, '\r\n')
