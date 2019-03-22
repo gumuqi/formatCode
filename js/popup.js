@@ -180,3 +180,45 @@ $('#decodeURIComponent').click(function() {
     str = decodeURIComponent(str);
     $('#textstr').val(str);
 })
+
+$('#translate').click(function() {
+    //验证是否是中文
+    var patternZH = new RegExp("[\u4E00-\u9FA5]+");
+    //验证是否是英文
+    var patternEN = new RegExp("[A-Za-z]+");
+    //验证是否是数字
+    var patternNB = new RegExp("[0-9]+");
+
+    let appid = '20190108000255370'
+    let query = $('#textstr').val() || '';
+    let salt = parseInt(Math.random()*10000000000);
+    let privateKey = '2jNY4Hc3o8P22PYO_D85';
+    let from = ''
+    
+    if (patternZH.test(query) || patternNB.test(query)) {
+        from = 'zh';
+        to = 'en';
+    } else {
+        from = 'en';
+        to = 'zh';
+    }
+    $.ajax({
+        url: 'http://api.fanyi.baidu.com/api/trans/vip/translate',
+        data: {
+            q: query,
+            from: from,
+            to: to,
+            appid: appid,
+            salt: salt,
+            sign: $.md5(appid + query + salt +privateKey)
+        },
+        success: function(data) {
+            let result = data.trans_result;
+            let str = '';
+            for(let i=0; i<result.length; i++) {
+                str += result[i].dst;
+            }
+            $('#textstr').val(query + ' : ' +str);
+        }
+    })
+})
